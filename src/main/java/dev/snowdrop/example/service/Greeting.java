@@ -15,14 +15,29 @@
  */
 package dev.snowdrop.example.service;
 
+import java.io.Serializable;
+
+import org.springframework.data.redis.core.RedisHash;
+
 // tag::snippet-greeting[]
-public class Greeting {
+@RedisHash("Greeting")
+public class Greeting implements Serializable {
 
     public static final String FORMAT = "Hello, %s!";
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     private final String content;
 
     public Greeting() {
+        this.id = "id";
         this.content = null;
     }
 
@@ -32,6 +47,11 @@ public class Greeting {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public String toString() {
+        return "Greeting {" + content + '}';
     }
 }
 // end::snippet-greeting[]
