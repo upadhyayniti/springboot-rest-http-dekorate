@@ -24,6 +24,8 @@ import javax.ws.rs.QueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 import dev.snowdrop.example.repo.GreetingRepository;
 
 @Path("/greeting")
@@ -37,11 +39,11 @@ public class GreetingEndpoint {
     @Produces("application/json")
     public Greeting greeting(@QueryParam("name") @DefaultValue("World") String name) {
         final String message = String.format(Greeting.FORMAT, name);
-        Greeting greet = new Greeting(message);
+        Greeting greet = new Greeting(UUID.randomUUID().toString(),message);
         greetingRepository.save(greet);
         System.out.println("I just wrote to redis for id" + greet.getId());
         final Greeting retrievedGreeting = greetingRepository.findById(greet.getId()).get();
-        //System.out.println("Retrieved greeting is " + retrievedGreeting.getContent());
+        System.out.println("Retrieved greeting is " +  retrievedGreeting.getContent());
         return greet; //new Greeting(message);
     }
 }

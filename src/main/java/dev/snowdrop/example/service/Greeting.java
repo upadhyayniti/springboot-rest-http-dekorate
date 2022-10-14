@@ -36,12 +36,9 @@ public class Greeting implements Serializable {
 
     private final String content;
 
-    public Greeting() {
-        this.id = "id";
-        this.content = null;
-    }
-
-    public Greeting(String content) {
+    /* Don't create another constructor. That messes up repo retrieve for some reason */
+    public Greeting(String id, String content) {
+        this.id = id;
         this.content = content;
     }
 
