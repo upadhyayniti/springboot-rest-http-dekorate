@@ -8,6 +8,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 
 @Configuration
 @ComponentScan("dev.snowdrop.example")
@@ -17,7 +18,10 @@ public class RedisConfig {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        return new JedisConnectionFactory();
+
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("redis.redis.svc.cluster.local", 6379);
+        redisStandaloneConfiguration.setPassword("redis");
+        return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
 
     @Bean

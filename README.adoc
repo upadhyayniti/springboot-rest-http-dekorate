@@ -46,14 +46,14 @@ NOTE: To stop your running example application in a Linux or macOS terminal, use
 == Running the Example Application on a Single-node OpenShift Cluster
 If you have a single-node OpenShift cluster, such as Minishift or Red Hat Container Development Kit, installed and running, you can also deploy your example application there. A single-node OpenShift cluster provides you with access to a cloud environment that is similar to a production environment.
 
-To deploy your example application to a running single-node OpenShift cluster:
+To deploy your example application to a running single-node OpenShift cluster (fabric8:deploy doesn't work):
 [source,bash,options="nowrap",subs="attributes+"]
 ----
 $ oc login -u developer -p developer
 
 $ oc new-project MY_PROJECT_NAME
 
-$ mvn clean fabric8:deploy -Popenshift
+$ ./mvnw clean verify -Popenshift -Ddekorate.deploy=true -DskipTests
 ----
 
 == More Information
