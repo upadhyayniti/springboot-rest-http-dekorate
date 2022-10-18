@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Configuration
 @ComponentScan("dev.snowdrop.example")
 @EnableRedisRepositories(basePackages = "dev.snowdrop.example.repo")
-@PropertySource("classpath:application-dev.properties")
+@PropertySource("classpath:application.properties")
 public class RedisConfig {
 
 // Tried RedisProperties but didn't work. So using this for now.
