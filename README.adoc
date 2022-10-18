@@ -53,7 +53,7 @@ $ oc login -u developer -p developer
 
 $ oc new-project MY_PROJECT_NAME
 
-$ ./mvnw clean verify -Popenshift -Ddekorate.deploy=true -DskipTests
+$ ./mvnw clean verify -Popenshift -Ddekorate.deploy=true -DskipTests 
 ----
 
 == More Information
