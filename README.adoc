@@ -56,6 +56,25 @@ $ oc new-project MY_PROJECT_NAME
 $ ./mvnw clean verify -Popenshift -Ddekorate.deploy=true -DskipTests 
 ----
 
+== Redis access
+Once you login to redis, you can run KEYS * to get all KEYS
+
+Use 'type <key name>' to get type of key
+
+Use 'HGETAll <key name>' to get details of what was written
+
+If you get output like 
+1) "_class"
+2) "dev.snowdrop.example.service.Greeting"
+3) "id"
+4) "0a5d824d-f444-4810-b91d-ea83b4b49a52"
+5) "content"
+6) "Hello, redis11!"
+
+Use 'HGET <key name> content' to get just the content data
+
+SMEMBERS "Greeting" gives you all members you have added to redis so far. 
+
 == More Information
 You can learn more about this example application and rest of the Spring Boot runtime in the link:https://access.redhat.com/documentation/en-us/red_hat_support_for_spring_boot/[Spring Boot Runtime Guide].
 
