@@ -53,6 +53,10 @@ $ oc login -u developer -p developer
 
 $ oc new-project MY_PROJECT_NAME
 
+Create service on OCP following https://kubernetes.io/docs/concepts/services-networking/service/#externalname
+
+Update application-openshift.properties if needed.
+
 $ ./mvnw clean verify -Popenshift -Ddekorate.deploy=true -DskipTests 
 ----
 
